@@ -21,7 +21,7 @@ else
 	var velocidade = max_velh;
 }
 
-if (dash)
+if (dash && chao)
 {
 	slide = true;	
 }
@@ -101,9 +101,53 @@ if (slide)
 		slide_timer = room_speed /2;
 		image_yscale = 1; // ao parar de deslizar ele volta ao tamha normal
 	}
+}
+
+	
+	
+	//recebndo dano
+if (place_meeting(x, y, obj_enemy))
+{
+	dano = true	
+}
+if (dano)
+{
+	if(controle_dano)
+	{
+		velv = -3;
+		controle_dano = false;
+		dano_direction = sign(velh) * -5;
+		image_speed = .1;
+		vida--;
+		
+	}
+	sprite = spr_player_dano;
+	velh = dano_direction;
+	image_blend = c_red;
+	
+	dano_timer--;
+	
+	if(dano_timer <= 0)
+	{
+		dano = false;
+		dano_timer = room_speed/2;
+		image_blend = c_white;
+		controle_dano = true;
+		image_speed = .5
+	}
+
 
 }
+
+// dando dano no inimigo
+var dano_inimigo = collision_rectangle(x - sprite_width/2, y +1, x + sprite_width / 2, y+3, obj_enemy, 1, 1)
+
+if (dano_inimigo && !dano)
+{
+	velv = -max_velv;
+	instance_destroy(dano_inimigo);
+}
+
  sprite_index = sprite;
 
-
-
+if (vida <= 0) room_restart()

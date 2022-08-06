@@ -5,11 +5,13 @@
 
 velh = 0;
 velv = 0;
-max_velh = 5;
+max_velh = 3;
 velh_run = 7;
 max_velv = 7;
 grav = .2;
 chao = 0;
+
+
 sprite = spr_player_idle;
 sprite_index = sprite;
 image_speed = 0.5;
@@ -19,3 +21,11 @@ slide_timer = room_speed /2;
 
 max_jump = 2;
 pulo = max_jump;
+
+
+dano = false;
+dano_timer = room_speed /2;
+controle_dano = true;
+dano_direction = 0;
+
+vida = 3;

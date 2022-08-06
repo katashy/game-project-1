@@ -2,12 +2,8 @@
 // You can write your code in this editor
 
 
-scr_colisao()
 
 
-
-
-
-
+image_speed = 1;
 
 
